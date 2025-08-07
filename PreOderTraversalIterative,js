@@ -1,0 +1,27 @@
+// PreOrder Traversal -- Iterative Appraoch
+
+/*
+- If the tree is emtpy , return [];
+- Initialize an array for ans , and stack with root .
+- While the stack is not empty.
+- Pop the top node , from the stack and push into ans .
+- Push the right child (if it exists) and then the left child (if it exists) , so the left child is processed first and stack is LIFO.
+
+- Time Complexity : O(n).
+*/
+
+var preorderTraversal = function (root) {
+    if (!root) return [];
+
+    let ans = [];
+    let stack = [root];
+
+    while (stack.length) {
+        let curr = stack.pop();
+        ans.push(curr.val);
+
+        curr.right && stack.push(curr.right);
+        curr.left && stack.push(curr.left);
+    }
+    return ans;
+};
